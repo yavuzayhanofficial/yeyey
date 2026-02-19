@@ -176,9 +176,11 @@ class _BookingCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _InfoChip(icon: Icons.calendar_today, text: dateFormat.format(booking.date)),
-                _InfoChip(icon: Icons.access_time, text: '${booking.startTime} - ${booking.endTime}'),
-                _InfoChip(icon: Icons.attach_money, text: '₺${booking.totalPrice.toInt()}'),
+                Expanded(child: _InfoChip(icon: Icons.calendar_today, text: dateFormat.format(booking.date))),
+                const SizedBox(width: 8),
+                Expanded(child: _InfoChip(icon: Icons.access_time, text: '${booking.startTime} - ${booking.endTime}')),
+                const SizedBox(width: 8),
+                Expanded(child: _InfoChip(icon: Icons.attach_money, text: '₺${booking.totalPrice.toInt()}')),
               ],
             ),
           ),
@@ -188,9 +190,12 @@ class _BookingCard extends StatelessWidget {
               children: [
                 const Icon(Icons.sticky_note_2_outlined, size: 14, color: AppColors.textSecondary),
                 const SizedBox(width: 6),
-                Text(
-                  booking.note!,
-                  style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                Expanded(
+                  child: Text(
+                    booking.note!,
+                    style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),
